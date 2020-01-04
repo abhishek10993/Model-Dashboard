@@ -1,0 +1,126 @@
+<div class="row" >
+ <button class="datebutton" type="button" (click)="opendatefilter()">Select Date Range</button>
+</div>
+
+
+
+
+<div class="row" *ngIf="show" >
+    <div id="filterdiv">Filter Selected:</div>
+  <ul class="filter">
+    <li id="filterbutton">
+      <span class="close" (click)="deleteSkill()">x</span>
+      <span>{{filter}}</span>
+    </li>
+  </ul>
+</div>
+<div class="row"  align='center'>
+        <nb-card size="medium" class="dateselector" *ngIf="datefilter" >
+        <nb-card-header>Datepicker With Range</nb-card-header>
+        <nb-card-body>
+            <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="1" [dayTemplate]="t" outsideDays="hidden">
+            </ngb-datepicker>
+            <ng-template #t let-date let-focused="focused">
+                <span class="custom-day"
+                      [class.focused]="focused"
+                      [class.range]="isRange(date)"
+                      [class.faded]="isHovered(date) || isInside(date)"
+                      (mouseenter)="hoveredDate = date"
+
+                      (mouseleave)="hoveredDate = null">
+                    {{ date.day }}
+                </span>
+            </ng-template>
+        </nb-card-body>
+<button class="datebutton" type="button" (click)="hidedatefilter()">Hide</button>
+    </nb-card>
+    <nb-card size="medium" id="pie-chart">
+                <nb-card-header>
+           Model File Types
+        </nb-card-header>
+        <ngx-charts-pie-chart
+            [view]=[500,500]
+            [scheme]="colorScheme"
+            [results]="results_pie"
+            [customColors]="customColors_pie"
+            [explodeSlices]="explodeSlices"
+            [labels]="showLabels"
+            [doughnut]="doughnut">
+        </ngx-charts-pie-chart>
+    </nb-card>
+    <nb-flip-card [showToggleButton]="false" [flipped]="flipped" id="flip-card">
+        <nb-card-front>
+            <nb-card size="medium" width="100">
+                <nb-card-header>
+                    Model Types
+                    <i class="nb-arrow-right" (click)="toggleView()"></i>
+                </nb-card-header>
+                <ngx-charts-bar-horizontal
+                    [view]=[600,350]
+                    [scheme]="colorscheme_bar_models_all"
+                    [showDataLabel]="showDataLabel"
+                    [results]="results_bar"
+                    [barPadding]="models_barPadding"
+                    [xAxis]="showXAxis"
+                    [yAxis]="showYAxis"
+                    [xAxisLabel]="xAxisLabel"
+                    [yAxisLabel]="yAxisLabel"
+                    (select)="onBarSliceSelect($event)">
+                </ngx-charts-bar-horizontal>
+            </nb-card>
+        </nb-card-front>
+        <nb-card-back>
+            <nb-card size="medium">
+                <nb-card-header>
+                    Model Types (Size)
+                </nb-card-header>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Model Types</th>
+                            <th scope="col">Total Size</th>
+                            <th scope="col">Avg. Size</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let size of sizes_by_category">
+                        <th scope="row"> {{size.name}} </th>
+                        <td> {{size.total_size}} </td>
+                        <td> {{size.avg_size}} </td>
+
+                    </tbody>
+                </table>
+                <i class="nb-arrow-right" (click)="toggleView()"></i>
+            </nb-card>
+        </nb-card-back>
+    </nb-flip-card>
+
+</div>
+<div class="row"  align='center'>
+    <nb-card id="bar-chart">
+        <nb-card-header>
+            Models added per month
+        </nb-card-header>
+        <ngx-charts-bar-vertical
+            [view]=[1000,350]
+            [showGridLines]=false
+            [scheme]="colorscheme_bar"
+            [results]="result"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [xAxisLabel]="xAxisLabel"
+            [barPadding]="barPadding"
+            [yAxisLabel]="yAxisLabel">
+        </ngx-charts-bar-vertical>
+    </nb-card>
+    <nb-card size="medium" id="controls">
+        <nb-card-header>
+            Controls
+        </nb-card-header>
+        <nb-card-body class="smallText">
+            <form>
+            <input type="radio" name="radioButton" value="delta" (change)="handleChange($event)" checked><label>Show Deltas</label><br><br>
+            <input type="radio" name="radioButton" value="total" (change)="handleChange($event)"><label>Show Totals </label><br>
+        </form>
+        </nb-card-body>
+    </nb-card>
+</div>

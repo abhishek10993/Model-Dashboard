@@ -1,0 +1,71 @@
+<div>
+	<div class="row">
+	<nb-card class="search">
+		<nb-card-header>Search</nb-card-header>
+		 <nb-card-body>
+		 	<form #f="ngForm" (ngSubmit)="search(f)" novalidate>
+			  <label>
+			  	Goal:
+			  </label>
+			  <input class="textbox" type="text" name="goal" ngModel>
+			  <br>
+			  <label>
+			  Model Size:
+			</label>
+			  <input type="text" name="size" ngModel class="textbox">
+			  <br>
+			  <label>
+			  Creator:
+			</label>
+			  <input type="text" name="creator" ngModel class="textbox">
+			  <br><br>
+			   <button class="searchbutton">Search</button>
+			</form>
+		 </nb-card-body>
+	</nb-card>
+	<nb-card class="gamification">
+		<nb-card-header>Gamification</nb-card-header>
+		<nb-card-body>
+        <!-- TODO: maybe use a for loop when there are more users -->
+        <nb-user name="John Doe" title="10 Won"></nb-user>
+        <br>
+        <nb-user name="Thomas Mueller" title="7 Won"></nb-user>
+        <br>
+        <nb-user name="John Terry" title="6 Won"></nb-user>
+        <br>
+		</nb-card-body>
+	</nb-card>
+	</div>
+	<div class="row">
+	<nb-card class="results">
+		<nb-card-header>
+			<p style="float: left;">Result</p>
+            <p style="float: right;">Similarity</p>
+		</nb-card-header>
+		 <nb-card-body>
+		 	            <ul style="list-style: none;">
+                <li *ngFor="let res of searchResult">
+                    <div style="overflow: hidden;">
+                        <p style="float: left;">{{res.result}}</p>
+                        <p style="float: right;">{{res.similarity}}</p>
+                    </div>
+
+                </li>
+            </ul>
+		 </nb-card-body>
+	</nb-card>
+	<nb-card class="keywords">
+		<nb-card-header>Keywords</nb-card-header>
+		 <nb-card-body>
+		 	  <ul style="list-style: none;">
+    <li id="filterbutton" *ngFor="let word of keywords;let i=index">
+      <span class="close" (click)="deleteWord(i)">x</span>
+      <span>{{word}}</span>
+    </li>
+        </ul>
+		 </nb-card-body>
+	</nb-card>
+	</div>
+
+
+</div>

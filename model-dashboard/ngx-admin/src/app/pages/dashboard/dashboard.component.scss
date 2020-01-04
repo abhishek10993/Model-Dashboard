@@ -1,0 +1,115 @@
+@import '../../@theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/breakpoints';
+
+@include nb-install-component() {
+
+  display: block;
+  height: 100%;
+  width: 100%;
+
+    .summary-container {
+        display: flex;
+        flex: 1;
+        background-color: nb-theme(chart-panel-summary-background-color);
+        box-shadow: nb-theme(chart-panel-summary-box-shadow);
+        justify-content: space-between;
+        padding: 1.5rem 4rem 1rem;
+        margin-bottom: 1rem;
+        border:
+        nb-theme(chart-panel-summary-border-width)
+                solid
+                nb-theme(chart-panel-summary-border-color);
+        border-left: none;
+        border-right: none;
+    }
+
+    .value {
+        font-size: 2rem;
+        color: nb-theme(color-fg-heading);
+    }
+    .summary {
+        background-color: Black;
+        border: none;
+        color: white;
+        padding: 10px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+    .summary:hover {
+        background-color: #4CAF50; /* Green */
+        color: white;
+    }
+
+    .smallText{
+    font-size: 20px;
+    }
+    .greentext{
+        color : green;
+    }
+    .models_per_application{
+        margin-left: 10px;
+    }
+    .model_status{
+        margin-left: 10px;
+    }
+
+    .largeText{
+    font-size: 32px;
+    color:DarkBlue;
+
+    }
+    .Planned {color : #2d3133;}
+    .Experimental {color :#fcb103;}
+    .Operation {color : #2ec95a;}
+    .Maintenance {color :  #32a5c2;}
+    .Archived {color : #9caaad;}
+
+    .data-card{
+        height: 200px;
+        width: 350px;
+        margin:20px;
+    }
+    .data{
+        padding: 20px 0px 0px 0px;
+        background-color: white;
+    }
+    .icon-container{
+        padding: 0px 0px 20px 210px;
+        position: relative;
+        margin:0 auto;
+    }
+
+    @include media-breakpoint-down(sm) {
+        .value, .title {
+            font-weight: nb-theme(font-weight-bold);
+        }
+
+        .title {
+            font-size: nb-theme(font-size-sm);
+        }
+
+
+        .value {
+            font-size: nb-theme(font-size-xlg);
+        }
+    }
+
+    @include media-breakpoint-down(is) {
+        .summary-container {
+            padding-left: nb-theme(padding);
+            padding-right: nb-theme(padding);
+        }
+
+        .value {
+            margin-top: 0.5rem;
+        }
+    }
+    nb-card{
+    border-radius: 8px;
+  box-shadow: 5px 5px #888888;
+    }
+
+}

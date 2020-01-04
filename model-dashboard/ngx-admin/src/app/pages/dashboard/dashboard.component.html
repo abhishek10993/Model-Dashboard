@@ -1,0 +1,76 @@
+<div class="row">
+    <nb-card class="data-card">
+      <div class="data">
+        <nb-card-body class="smallText">
+          Total Models<br>
+        </nb-card-body>
+        <nb-card-body class="largeText">
+           {{static_data.total_models}} <br>
+        </nb-card-body>
+          <nb-card-body class="smallText greentext">
+          + {{static_data.added_last_month}} models from last month<br>
+        </nb-card-body>
+      </div>
+      <div class="icon-container" >
+          <img src="assets/images/Wuerfel.gif" width="65" height="65">
+      </div>
+
+    </nb-card>
+    <nb-card class="data-card">
+        <div class="data" >
+            <nb-card-body class="smallText">
+                Repository Size<br>
+            </nb-card-body>
+            <nb-card-body class="largeText">
+                {{static_data.total_size}}<br>
+            </nb-card-body>
+            <nb-card-body  class="smallText greentext">
+                + {{static_data.increased_last_month}} % from last month<br>
+            </nb-card-body>
+
+        </div>
+        <div class="icon-container" >
+            <img src="assets/images/total_repository.jpg" >
+        </div>
+
+    </nb-card>
+
+    <nb-card class="data-card">
+        <div class="data">
+            <nb-card-body class="smallText">
+                Models Status<br style="line-height: 200%;">
+            </nb-card-body>
+            <nb-card-body *ngFor="let status of model_status" class="smallText model_status {{status.status}}">
+                        {{status.status}} &nbsp;&nbsp;&nbsp;&nbsp; {{status.count}} <br>
+
+
+            </nb-card-body>
+        </div>
+
+
+
+    </nb-card>
+
+    <nb-card class="data-card">
+        <div class="data" >
+            <nb-card-body class="smallText">
+                Models Per Application<br><br>
+            </nb-card-body>
+            <nb-card-body *ngFor="let status of models_per_application" class="smallText models_per_application">
+                {{status.name}} &nbsp;&nbsp;&nbsp;&nbsp; {{status.count}} <br>
+            </nb-card-body>
+
+        </div>
+        <div class="icon-container" >
+            <img src="assets/images/application.jpg" >
+        </div>
+
+    </nb-card>
+
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+      <linegraph></linegraph>
+  </div>
+</div>

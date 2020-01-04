@@ -1,0 +1,93 @@
+@import '../../../@theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/breakpoints';
+
+@include nb-install-component() {
+  @include media-breakpoint-down(sm) {
+    .value, .title {
+      font-weight: nb-theme(font-weight-bold);
+    }
+
+    .title {
+      font-size: nb-theme(font-size-sm);
+    }
+
+    .value {
+      font-size: nb-theme(font-size-xlg);
+    }
+  }
+
+  @include media-breakpoint-down(is) {
+    .value {
+      margin-top: 0.5rem;
+    }
+  }
+      nb-card{
+    border-radius: 8px;
+  box-shadow: 5px 5px #888888;
+  margin-right: 20px;
+    }
+    .searchbutton {
+  background-color: white;
+  border: 1px solid grey;
+  color: black;
+  border-radius: 3px;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 4px 2px;
+  margin-left: 2px;
+  cursor: pointer;
+  width: 200px;
+}
+.searchbutton:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+    nb-card-header {
+        font-size: 22px;
+    }
+.search{
+	width:50%;
+	height:300px;
+}
+.results{
+	width:50%;
+	max-height: 350px;
+	overflow-y: auto;
+}
+.gamification{
+	width:40%;
+	max-height: 300px;
+	overflow-y: auto;
+}
+.keywords{
+	width:40%;
+	max-height: 350px;
+	overflow-y: auto;
+}
+label{
+	width:100px;
+}
+.textbox{
+	  width: calc(100% - 110px);
+  box-sizing: border-box;
+}
+
+.filter {
+  list-style: none;
+  padding-left: 0;
+    margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+#filterbutton {
+  padding: 5px 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  text-transform: capitalize;
+  font-size: 15px;
+  color: black;
+}
+
+}
